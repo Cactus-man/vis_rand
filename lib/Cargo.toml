@@ -1,0 +1,18 @@
+[package]
+name = "dice"
+license = "MIT OR Apache-2.0"
+version = "0.1.0"
+edition = "2021"
+authors = ["Paul Bühne <buehne.paul@google.com>"]
+homepage = "github.com/Cactus-man/rand_visualizer"
+
+[dependencies]
+rand = "*"
+rand_distr = "*"
+num_cpus = "*"
+nohash-hasher = "0.2.0"
+# parking_lot = "0.12.1"
+
+[dev-dependencies]
+regex = "*"
+clap = { version = "*" }
