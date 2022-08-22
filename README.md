@@ -1,4 +1,6 @@
-# Dice Rolling Simulator
+# Vis Rand
+
+I currently have no great description
 
 ## License
 
