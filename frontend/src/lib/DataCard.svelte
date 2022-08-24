@@ -3,12 +3,12 @@
     import LinearProgress from "@smui/linear-progress";
     import DataTable, { Head, Row, Body, Cell } from "@smui/data-table";
 
-    const total = 0;
+    export let total_rolls;
 
     export let results: RollResult[] = [];
     export let rolled = 0;
 
-    $: progress = rolled / total;
+    $: progress = rolled / total_rolls;
 
     const gcd = (a, b) => {
         a = Math.abs(a);
@@ -41,15 +41,15 @@
                         <Cell numeric>{dots}</Cell>
                         <Cell numeric>{amount}</Cell>
                         <Cell numeric>
-                            {amount / gcd(amount, total)}/ {total /
-                                gcd(amount, total)}
+                            {amount / gcd(amount, total_rolls)} / {total_rolls /
+                                gcd(amount, total_rolls)}
                         </Cell>
                     </Row>
                 {/each}
             </Body>
             <LinearProgress
                 {progress}
-                aria-label="{rolled} rolls out of {total}..."
+                aria-label="{rolled} rolls out of {total_rolls}..."
             />
         </DataTable>
     </Content>
