@@ -2,13 +2,18 @@
   import DiceDash from "./lib/DiceCard.svelte";
   import RollsDash from "./lib/DataCard.svelte";
 
-  let total_rolls = 100;
-  let results: RollResult[] = [];
+  let results: {
+    rolls: number;
+    res: RollResult[];
+  } = {
+    rolls: 0,
+    res: [],
+  };
 </script>
 
 <main>
-  <DiceDash bind:results bind:total_rolls />
-  <RollsDash bind:results bind:total_rolls />
+  <DiceDash bind:results />
+  <RollsDash bind:results />
 </main>
 
 <style>

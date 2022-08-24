@@ -8,7 +8,7 @@
 
     import { invoke } from "@tauri-apps/api";
 
-    export let total_rolls = 100;
+    let rolls = 100;
     let dice: Panel[] = [
         { die: { variant: "simple", sides: 6 }, amount: 1 },
         {
@@ -25,7 +25,10 @@
         { die: { variant: "simple", sides: 8 }, amount: 4 },
     ];
 
-    export let results: RollResult[];
+    export let results: {
+        rolls: number;
+        res: RollResult[];
+    };
 
     $: rollable = dice.length === 0;
 
@@ -35,17 +38,17 @@
         (dice = [...dice, { die, amount }]);
 
     const roll = () => {
-        invoke("roll", { rolls: total_rolls, dice }).then(
-            (res: RollResult[]) => (results = res)
+        invoke("roll", { rolls, dice }).then(
+            (res: RollResult[]) => (results = { rolls, res })
         );
-        console.log(`${total_rolls}, ${dice}`);
+        console.log(`${rolls}, ${dice}`);
     };
 </script>
 
 <Card>
     <div><h2 class="mdc-typography--headline6">Würfel</h2></div>
     <Actions class="dice-actions">
-        <Textfield bind:value={total_rolls} type="number" suffix="Würfe" />
+        <Textfield bind:value={rolls} type="number" suffix="Würfe" />
         <IconButton bind:disabled={rollable} on:click={roll}>
             <Icon class="material-icons">play_arrow</Icon>
         </IconButton>
