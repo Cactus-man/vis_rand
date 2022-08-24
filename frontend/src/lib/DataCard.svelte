@@ -9,6 +9,19 @@
     export let rolled = 0;
 
     $: progress = rolled / total;
+
+    const gcd = (a, b) => {
+        a = Math.abs(a);
+        b = Math.abs(b);
+
+        if (b > a) [a, b] = [b, a];
+        while (true) {
+            if (b == 0) return a;
+            a %= b;
+            if (a == 0) return b;
+            b %= a;
+        }
+    };
 </script>
 
 <Card>
@@ -19,6 +32,7 @@
                 <Row>
                     <Cell numeric>Augen</Cell>
                     <Cell numeric>Anzahl</Cell>
+                    <Cell numeric>Rel. Häufigkeit</Cell>
                 </Row>
             </Head>
             <Body>
@@ -26,6 +40,10 @@
                     <Row>
                         <Cell numeric>{dots}</Cell>
                         <Cell numeric>{amount}</Cell>
+                        <Cell numeric>
+                            {amount / gcd(amount, total)}/ {total /
+                                gcd(amount, total)}
+                        </Cell>
                     </Row>
                 {/each}
             </Body>
