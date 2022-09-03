@@ -1,30 +1,36 @@
 <script lang="ts">
-  import DiceDash from "./lib/DiceCard.svelte";
-  import RollsDash from "./lib/DataCard.svelte";
+  import Editor from "./lib/configure/Editor.svelte";
+  import ActionArea from "./lib/configure/ActionArea.svelte";
+  import Visualization from "./lib/visualize/Visualization.svelte";
+  import { dice, data } from "./lib/common";
 
-  let results: {
-    rolls: number;
-    res: RollResult[];
-  } = {
-    rolls: 0,
-    res: [],
-  };
+  import { invoke } from "@tauri-apps/api";
+
+  let total: number = 100,
+    rolls: number = total;
+
+  function roll() {
+    rolls = total;
+    invoke("roll", { dice: $dice, total }).then((r: typeof $data) =>
+      data.set(r)
+    );
+  }
 </script>
 
 <main>
-  <DiceDash bind:results />
-  <RollsDash bind:results />
+  <div>
+    <ActionArea bind:total {roll} />
+    <Editor />
+  </div>
+  <div>
+    <Visualization {rolls} />
+  </div>
 </main>
 
 <style>
   :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       d Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-
-  :global(body) {
-    margin: 0;
-    padding: 8px;
   }
 
   main {

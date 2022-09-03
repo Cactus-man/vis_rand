@@ -18,12 +18,16 @@
     "@smui/button": "^6.0.0-beta.16",
     "@smui/card": "^6.0.0-beta.16",
     "@smui/data-table": "^6.0.0-beta.16",
-    "@smui/dialog": "^6.0.0-beta.16",
+    "@smui/dialog": "^6.1.0",
+    "@smui/fab": "^6.1.0",
+    "@smui/form-field": "^6.1.0",
     "@smui/icon-button": "^6.0.0-beta.16",
     "@smui/linear-progress": "^6.0.0-beta.16",
-    "@smui/list": "^6.0.0-beta.16",
+    "@smui/list": "^6.1.0",
     "@smui/paper": "^6.0.0-beta.16",
     "@smui/select": "^6.0.0-beta.16",
+    "@smui/tab": "^6.1.0",
+    "@smui/tab-bar": "^6.1.0",
     "@smui/textfield": "^6.0.0-beta.16",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tauri-apps/cli": "^1.0.0",
@@ -37,6 +41,8 @@
     "vite": "*"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.0.1"
+    "@tauri-apps/api": "^1.0.1",
+    "@types/d3": "^7.4.0",
+    "d3": "^7.6.1"
   }
 }

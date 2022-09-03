@@ -17,6 +17,11 @@ body {
   color: theme.$on-surface;
 }
 
+body {
+  margin: 0;
+  padding: 8px;
+}
+
 a {
   color: #40b3ff;
 }
